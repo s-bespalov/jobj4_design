@@ -12,16 +12,12 @@ public class MatrixIt implements Iterator<Integer> {
         this.data = data;
     }
 
-    private void iterateRows() {
+    @Override
+    public boolean hasNext() {
         while (row < data.length && column >= data[row].length) {
             row++;
             column = 0;
         }
-    }
-
-    @Override
-    public boolean hasNext() {
-        iterateRows();
         return row < data.length;
     }
 
@@ -30,8 +26,6 @@ public class MatrixIt implements Iterator<Integer> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        var rsl = data[row][column++];
-        iterateRows();
-        return rsl;
+        return data[row][column++];
     }
 }
