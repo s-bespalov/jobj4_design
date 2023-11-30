@@ -22,6 +22,12 @@ public class ForwardLinked<T> implements Iterable<T> {
         modCount++;
     }
 
+    public void addFirst(T value) {
+        head = new Node<>(value, head);
+        size++;
+        modCount++;
+    }
+
     public T get(int index) {
         var node = getNodeAtIndex(index);
         return node.item;
