@@ -32,11 +32,13 @@ public class ForwardLinked<T> implements Iterable<T> {
             throw new NoSuchElementException();
         }
         var tmpNode = head;
+        var deleted = tmpNode.item;
         head = head.next;
         tmpNode.next = null;
+        tmpNode.item = null;
         size--;
         modCount++;
-        return tmpNode.item;
+        return deleted;
     }
 
     @Override
