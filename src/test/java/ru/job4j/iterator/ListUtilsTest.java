@@ -34,6 +34,12 @@ class ListUtilsTest {
     }
 
     @Test
+    void whenAddAfterLastIndex() {
+        ListUtils.addAfter(input, 1, 2);
+        assertThat(input).hasSize(3).containsSequence(1, 3, 2);
+    }
+
+    @Test
     void whenRemoveOddNumbers() {
         var list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8));
         ListUtils.removeIf(list, x -> x % 2 != 0);
