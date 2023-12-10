@@ -16,12 +16,11 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
 
     @Override
     public boolean put(K key, V value) {
-        if (LOAD_FACTOR - (count / (float) capacity) <= 0.01F) {
+        if (LOAD_FACTOR * capacity <= count) {
             expand();
         }
         var rsl = false;
-        var h = Objects.hashCode(key);
-        var i = indexFor(hash(h));
+        var i = keyIndex(key);
         if (table[i] == null) {
             table[i] = new MapEntry<>(key, value);
             count++;
@@ -44,8 +43,7 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         var newTable = new MapEntry[capacity];
         Arrays.stream(table).forEach(entry -> {
             if (entry != null) {
-                var h = Objects.hashCode(entry.key);
-                var i = indexFor(hash(h));
+                var i = keyIndex(entry.key);
                 if (newTable[i] == null) {
                     newTable[i] = entry;
                 }
@@ -54,14 +52,19 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
         table = newTable;
     }
 
+    private int keyIndex(K key) {
+        return indexFor(hash(Objects.hashCode(key)));
+    }
+
+    private boolean keysEquals(K key1, K key2) {
+        return Objects.hashCode(key1) == Objects.hashCode(key2) && Objects.equals(key1, key2);
+    }
+
     @Override
     public V get(K key) {
-        var h = Objects.hashCode(key);
-        var i = indexFor(hash(h));
+        var i = keyIndex(key);
         V rsl = null;
-        if (table[i] != null
-                && Objects.hashCode(table[i].key) == h
-                && Objects.equals(key, table[i].key)) {
+        if (table[i] != null && keysEquals(key, table[i].key)) {
             rsl = table[i].value;
         }
         return rsl;
@@ -69,12 +72,9 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
 
     @Override
     public boolean remove(K key) {
-        var h = Objects.hashCode(key);
-        var i = indexFor(hash(h));
+        var i = keyIndex(key);
         var rsl = false;
-        if (table[i] != null
-                && Objects.hashCode(table[i].key) == h
-                && Objects.equals(key, table[i].key)) {
+        if (table[i] != null && keysEquals(key, table[i].key)) {
             table[i] = null;
             count--;
             modCount++;
