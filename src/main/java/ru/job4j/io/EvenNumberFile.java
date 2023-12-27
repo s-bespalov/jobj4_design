@@ -12,7 +12,7 @@ public class EvenNumberFile {
                 System.out.printf("%s is %s\n", line, Integer.parseInt(line) % 2 == 0 ? "even" : "odd");
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }
