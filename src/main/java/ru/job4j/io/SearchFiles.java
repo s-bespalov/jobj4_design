@@ -16,7 +16,7 @@ public class SearchFiles implements FileVisitor<Path> {
     private Predicate<Path> condition;
     private List<Path> paths;
 
-    SearchFiles(Predicate<Path> condition) {
+    public SearchFiles(Predicate<Path> condition) {
         this.condition = condition;
         paths = new LinkedList<>();
     }
