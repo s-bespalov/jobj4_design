@@ -9,14 +9,24 @@ import java.util.function.Predicate;
 
 public class Search {
 
-    private static boolean isArgumentsValid(String[] args) {
-        return args.length >= 2 && Files.exists(Path.of(args[0]));
+    private static void checkArguments(String[] args) {
+        if (args.length < 2) {
+            throw new IllegalArgumentException("Arguments not passed to program");
+        }
+        var path = Path.of(args[0]);
+        if (!Files.exists(path)) {
+            throw new IllegalArgumentException(String.format("The directory '%s' is not exist", args[0]));
+        }
+        if (!Files.isDirectory(path)) {
+            throw new IllegalArgumentException(String.format("The path '%s' is not directory", args[0]));
+        }
+        if (args[1].length() < 2 || args[1].charAt(0) != '.') {
+            throw new IllegalArgumentException(String.format("'%s' is not correct file extension", args[1]));
+        }
     }
 
     public static void main(String[] args) throws IOException, IllegalArgumentException {
-        if (!isArgumentsValid(args)) {
-            throw new IllegalArgumentException("A valid path and file suffix required");
-        }
+        checkArguments(args);
         Path start = Paths.get(args[0]);
         search(start, path -> path.toFile().getName().endsWith(args[1])).forEach(System.out::println);
     }
