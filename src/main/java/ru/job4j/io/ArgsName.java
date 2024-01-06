@@ -18,6 +18,19 @@ public class ArgsName {
     private void parse(String[] args) {
         Arrays.stream(args)
                 .forEach(a -> {
+                    var ei = a.indexOf('=');
+                    var key = a.substring(1, ei);
+                    var val = a.substring(ei + 1);
+                    values.put(key, val);
+                });
+    }
+
+    private static void checkArguments(String[] args) {
+        if (args.length == 0) {
+            throw new IllegalArgumentException("Arguments not passed to program");
+        }
+        Arrays.stream(args)
+                .forEach(a -> {
                     if (a.charAt(0) != '-') {
                         throw new IllegalArgumentException(
                                 String.format("Error: This argument '%s' does not start with a '-' character", a));
@@ -37,24 +50,21 @@ public class ArgsName {
                         throw new IllegalArgumentException(
                                 String.format("Error: This argument '%s' does not contain a value", a));
                     }
-                    values.put(key, val);
                 });
     }
 
     public static ArgsName of(String[] args) {
-        if (args.length == 0) {
-            throw new IllegalArgumentException("Arguments not passed to program");
-        }
+        checkArguments(args);
         ArgsName names = new ArgsName();
         names.parse(args);
         return names;
     }
 
     public static void main(String[] args) {
-        ArgsName jvm = ArgsName.of(new String[] {"-Xmx=512", "-encoding=UTF-8"});
+        ArgsName jvm = ArgsName.of(new String[]{"-Xmx=512", "-encoding=UTF-8"});
         System.out.println(jvm.get("Xmx"));
 
-        ArgsName zip = ArgsName.of(new String[] {"-out=project.zip", "-encoding=UTF-8"});
+        ArgsName zip = ArgsName.of(new String[]{"-out=project.zip", "-encoding=UTF-8"});
         System.out.println(zip.get("out"));
     }
 }
