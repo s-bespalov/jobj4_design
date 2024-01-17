@@ -75,9 +75,15 @@ public class EchoServer {
                                     .orElse("");
                             if (!rawParams.isEmpty()) {
                                 var params = new Params(rawParams);
-                                if (params.has("msg") && Objects.equals(params.get("msg"), "Bye")) {
-                                    server.close();
-                                    break;
+                                if (params.has("msg")) {
+                                    switch (params.get("msg")) {
+                                        case "Hello" -> output.write("Hello".getBytes());
+                                        case "Exit" -> server.close();
+                                        default -> output.write("What".getBytes());
+                                    }
+                                    if (server.isClosed()) {
+                                        break;
+                                    }
                                 }
                             }
                         }
