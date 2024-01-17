@@ -63,7 +63,8 @@ public class EchoServer {
                      BufferedReader input = new BufferedReader(
                              new InputStreamReader(socket.getInputStream()))) {
                     output.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-                    for (var string = input.readLine(); string != null && !string.isEmpty(); string = input.readLine()) {
+                    var string = input.readLine();
+                    if (string != null && !string.isEmpty()) {
                         System.out.println(string);
                         if (string.contains("/?")) {
                             var rawParams = new Scanner(string)
@@ -80,6 +81,11 @@ public class EchoServer {
                                 }
                             }
                         }
+                        string = input.readLine();
+                    }
+                    while (string != null && !string.isEmpty()) {
+                        System.out.println(string);
+                        string = input.readLine();
                     }
                     output.flush();
                 }
