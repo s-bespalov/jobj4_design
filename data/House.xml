@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<object>
+<class> ru.job4j.serialization.json.my.House</class>
+<fields>
+    <address>26 Bolshaya Dmitrovka Street, Moscow 103426 Russia</address>
+    <buildYear>1780</buildYear>
+    <isResidential>false</isResidential>
+    <apartments>
+        <apartment>
+            <number>1</number>
+            <lodgers>
+                <lodger>
+                    <name>Alexei</name>
+                </lodger>
+            </lodgers>
+        </apartment>
+        <apartment>
+            <number>2</number>
+            <lodgers>
+                <lodger>
+                    <name>Kirill</name>
+                </lodger>
+            </lodgers>
+        </apartment>
+    </apartments>
+</fields>
+</object>
