@@ -10,7 +10,7 @@ import java.util.*;
 
 public class EchoServer {
 
-    private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(EchoServer.class.getName());
 
     private static class Params {
         private final Map<String, String> dict;
