@@ -2,11 +2,17 @@ package ru.job4j.serialization.json.my;
 
 import java.util.Arrays;
 import java.util.StringJoiner;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement(name = "apartment")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Apartment {
 
-    private final int number;
-    private final Lodger[] lodgers;
+    private int number;
+
+    @XmlElementWrapper(name = "lodgers")
+    @XmlElement(name = "lodger")
+    private Lodger[] lodgers;
 
     public int getNumber() {
         return number;
@@ -14,6 +20,9 @@ public class Apartment {
 
     public Lodger[] getLodgers() {
         return lodgers;
+    }
+
+    public Apartment() {
     }
 
     public Apartment(int number, Lodger[] lodgers) {

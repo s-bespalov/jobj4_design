@@ -1,12 +1,20 @@
 package ru.job4j.serialization.json.my;
 
 import java.util.StringJoiner;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement(name = "lodger")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Lodger {
-    private final String name;
+
+    @XmlElement
+    private String name;
 
     public Lodger(String name) {
         this.name = name;
+    }
+
+    public Lodger() {
     }
 
     public String getName() {

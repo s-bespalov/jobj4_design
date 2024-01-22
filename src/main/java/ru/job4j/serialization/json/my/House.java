@@ -5,13 +5,22 @@ import com.google.gson.GsonBuilder;
 
 import java.util.Arrays;
 import java.util.StringJoiner;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement(name = "house")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class House {
 
-    private final String address;
-    private final int buildYear;
-    private final Apartment[] apartments;
-    private final boolean isResidential;
+    private String address;
+    private int buildYear;
+
+    @XmlElementWrapper(name = "apartments")
+    @XmlElement(name = "apartment")
+    private Apartment[] apartments;
+    private boolean isResidential;
+
+    public House() {
+    }
 
     public String getAddress() {
         return address;
