@@ -30,6 +30,14 @@ public class Apartment {
         this.lodgers = lodgers;
     }
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setLodgers(Lodger[] lodgers) {
+        this.lodgers = lodgers;
+    }
+
     @Override
     public String toString() {
         return new StringJoiner(", ", Apartment.class.getSimpleName() + "[", "]")

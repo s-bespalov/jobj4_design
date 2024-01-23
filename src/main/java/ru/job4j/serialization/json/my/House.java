@@ -17,9 +17,14 @@ public class House {
     @XmlElementWrapper(name = "apartments")
     @XmlElement(name = "apartment")
     private Apartment[] apartments;
+
     private boolean isResidential;
 
     public House() {
+    }
+
+    public boolean isResidential() {
+        return isResidential;
     }
 
     public String getAddress() {
@@ -49,6 +54,22 @@ public class House {
                 .add("apartments=" + Arrays.toString(apartments))
                 .add("isResidential=" + isResidential)
                 .toString();
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setBuildYear(int buildYear) {
+        this.buildYear = buildYear;
+    }
+
+    public void setApartments(Apartment[] apartments) {
+        this.apartments = apartments;
+    }
+
+    public void setResidential(boolean residential) {
+        isResidential = residential;
     }
 
     public static void main(String[] args) {
