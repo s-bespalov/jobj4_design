@@ -1,0 +1,87 @@
+<mxfile host="app.diagrams.net" modified="2024-02-07T22:45:10.030Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="E5rdS_PypxnrEsHsJoZY" version="23.1.2" type="device">
+  <diagram name="Page-1" id="xxIyYDwpU5z4enLdfu8Z">
+    <mxGraphModel dx="1050" dy="2352" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="583" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="AWwli4fsNMUuhfQ0SWUu-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="240" y="-1600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-30" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="AWwli4fsNMUuhfQ0SWUu-29">
+          <mxGeometry x="0.0652" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-1" value="Buildings" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="-1640" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-6" value="id: serial" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-1">
+          <mxGeometry y="30" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-7" value="address: text" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-1">
+          <mxGeometry y="60" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-22" value="project_id: int" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-1">
+          <mxGeometry y="90" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="AWwli4fsNMUuhfQ0SWUu-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="-1600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-2" value="Apartments" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="600" y="-1640" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-8" value="id: serial" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-2">
+          <mxGeometry x="10" y="30" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-10" value="number: varchar(255)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-2">
+          <mxGeometry x="10" y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-17" value="building_id: int" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-2">
+          <mxGeometry x="10" y="90" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-3" value="Residents" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="-1640" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-11" value="id: serial" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-3">
+          <mxGeometry y="30" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-12" value="resident_name: varchar(255)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-3">
+          <mxGeometry y="60" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="AWwli4fsNMUuhfQ0SWUu-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="800" y="-1600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-5" value="Apartments_Residents" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
+          <mxGeometry x="880" y="-1640" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-15" value="apartment_id: int" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-5">
+          <mxGeometry x="10" y="30" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-16" value="resident_id: int" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-5">
+          <mxGeometry x="10" y="85" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-18" value="Building_Projects" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="-1640" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-19" value="id: serial" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-18">
+          <mxGeometry y="30" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-20" value="number: varchar(255)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-18">
+          <mxGeometry y="60" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-21" value="ibuilding_info: text" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="AWwli4fsNMUuhfQ0SWUu-18">
+          <mxGeometry y="90" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AWwli4fsNMUuhfQ0SWUu-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.667;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="AWwli4fsNMUuhfQ0SWUu-5" target="AWwli4fsNMUuhfQ0SWUu-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
