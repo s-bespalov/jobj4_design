@@ -44,3 +44,9 @@ create table attachs(
     attach_path varchar(255),
     item_id int references items(id)
 );
+
+create table roles_rules(
+    id serial primary key,
+    role_id int references roles(id),
+    rule_id int references rules(id)
+);
