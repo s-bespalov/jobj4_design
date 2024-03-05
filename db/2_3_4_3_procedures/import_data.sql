@@ -1,0 +1,22 @@
+insert into products (name, producer, count, price)
+values
+    ('Widget XL', 'ABC Electronics', floor(random() * 30), floor(random() * 100) + 20),
+    ('SuperGizmo', 'XYZ Innovations', floor(random() * 30), floor(random() * 100) + 20),
+    ('MegaWidget', 'QRS Corp', floor(random() * 30), floor(random() * 100) + 20),
+    ('TurboGadget', 'ABC Electronics', floor(random() * 30), floor(random() * 100) + 20),
+    ('NanoThing', 'LMN Tech', floor(random() * 30), floor(random() * 100) + 20),
+    ('GigaWidget', 'QRS Corp', floor(random() * 30), floor(random() * 100) + 20),
+    ('MightyDevice', 'ABC Electronics', floor(random() * 30), floor(random() * 100) + 20),
+    ('MicroGizmo', 'XYZ Innovations', floor(random() * 30), floor(random() * 100) + 20),
+    ('MiniGadget', 'LMN Tech', floor(random() * 30), floor(random() * 100) + 20),
+    ('MegaGizmo', 'XYZ Innovations', floor(random() * 30), floor(random() * 100) + 20),
+    ('SuperWidget', 'QRS Corp', floor(random() * 30), floor(random() * 100) + 20),
+    ('TinyThing', 'LMN Tech', floor(random() * 30), floor(random() * 100) + 20),
+    ('GigaGadget', 'XYZ Innovations', floor(random() * 30), floor(random() * 100) + 20),
+    ('MicroWidget', 'ABC Electronics', floor(random() * 30), floor(random() * 100) + 20),
+    ('NanoGizmo', 'QRS Corp', floor(random() * 30), floor(random() * 100) + 20),
+    ('SuperThing', 'LMN Tech', floor(random() * 30), floor(random() * 100) + 20),
+    ('MegaDevice', 'ABC Electronics', floor(random() * 30), floor(random() * 100) + 20),
+    ('TinyGadget', 'XYZ Innovations', floor(random() * 30), floor(random() * 100) + 20),
+    ('MightyGizmo', 'QRS Corp', floor(random() * 30), floor(random() * 100) + 20),
+    ('MiniWidget', 'LMN Tech', floor(random() * 30), floor(random() * 100) + 20);
