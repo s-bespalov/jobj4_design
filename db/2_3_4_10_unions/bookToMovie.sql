@@ -1,0 +1,5 @@
+SELECT name
+FROM movie
+INTERSECT
+SELECT title
+FROM book
