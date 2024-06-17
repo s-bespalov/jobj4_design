@@ -2,6 +2,7 @@ package ru.job4j.ood.srp.printers;
 
 import ru.job4j.ood.srp.currency.Currency;
 import ru.job4j.ood.srp.currency.CurrencyConverter;
+import ru.job4j.ood.srp.formatter.CurrencyFormat;
 import ru.job4j.ood.srp.formatter.DateTimeParser;
 import ru.job4j.ood.srp.model.Employee;
 
@@ -15,15 +16,18 @@ abstract class BasePrinter implements Printer {
     private final Currency targetCurrency;
     private final CurrencyConverter converter;
     private final DateTimeParser<Calendar> dateTimeParser;
+    private final CurrencyFormat currencyFormat;
 
     BasePrinter(Currency sourceCurrency,
                 Currency targetCurrency,
                 CurrencyConverter converter,
+                CurrencyFormat currencyFormat,
                 DateTimeParser<Calendar> dateTimeParser) {
         this.sourceCurrency = sourceCurrency;
         this.targetCurrency = targetCurrency;
         this.converter = converter;
         this.dateTimeParser = dateTimeParser;
+        this.currencyFormat = currencyFormat;
     }
 
     protected String printEmployeeField(Employee employee, Employee.Fields field) {
@@ -36,7 +40,7 @@ abstract class BasePrinter implements Printer {
                 if (!Objects.equals(sourceCurrency, targetCurrency)) {
                     salary = converter.convert(sourceCurrency, salary, targetCurrency);
                 }
-                yield String.valueOf(salary);
+                yield currencyFormat.format(salary);
             }
         };
     }

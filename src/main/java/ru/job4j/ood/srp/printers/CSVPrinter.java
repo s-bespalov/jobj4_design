@@ -2,6 +2,7 @@ package ru.job4j.ood.srp.printers;
 
 import ru.job4j.ood.srp.currency.Currency;
 import ru.job4j.ood.srp.currency.CurrencyConverter;
+import ru.job4j.ood.srp.formatter.CurrencyFormat;
 import ru.job4j.ood.srp.formatter.DateTimeParser;
 import ru.job4j.ood.srp.model.Employee;
 
@@ -18,8 +19,9 @@ public class CSVPrinter extends BasePrinter implements Printer {
                       Currency sourceCurrency,
                       Currency targetCurrency,
                       CurrencyConverter converter,
+                      CurrencyFormat currencyFormat,
                       String delimiter) {
-        super(sourceCurrency, targetCurrency, converter, dateTimeParser);
+        super(sourceCurrency, targetCurrency, converter, currencyFormat, dateTimeParser);
         this.rows = rows;
         this.sorter = sorter;
         this.delimiter = delimiter;

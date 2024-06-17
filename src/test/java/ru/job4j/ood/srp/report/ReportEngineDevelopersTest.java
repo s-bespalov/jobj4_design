@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import ru.job4j.ood.srp.currency.Currency;
 import ru.job4j.ood.srp.currency.InMemoryCurrencyConverter;
 import ru.job4j.ood.srp.formatter.DateTimeParser;
+import ru.job4j.ood.srp.formatter.PointAndTwoNumbers;
 import ru.job4j.ood.srp.formatter.ReportDateTimeParser;
 import ru.job4j.ood.srp.model.Employee;
 import ru.job4j.ood.srp.printers.CSVPrinter;
@@ -23,6 +24,7 @@ class ReportEngineDevelopersTest {
         Calendar now = Calendar.getInstance();
         Employee worker = new Employee("Ivan", now, now, 100);
         DateTimeParser<Calendar> parser = new ReportDateTimeParser();
+        var currencyFormat = new PointAndTwoNumbers();
         store.add(worker);
         var rows = List.of(
                 Employee.Fields.NAME,
@@ -30,7 +32,7 @@ class ReportEngineDevelopersTest {
                 Employee.Fields.FIRED,
                 Employee.Fields.SALARY);
         var printer = new CSVPrinter(parser, rows, new DoNotSort(),
-                Currency.RUB, Currency.RUB, new InMemoryCurrencyConverter(), ",");
+                Currency.RUB, Currency.RUB, new InMemoryCurrencyConverter(), currencyFormat, ",");
         Report engine = new ReportEngine(store, printer);
         StringBuilder expected = new StringBuilder()
                 .append("Name,Hired,Fired,Salary")
@@ -38,7 +40,7 @@ class ReportEngineDevelopersTest {
                 .append(worker.getName()).append(",")
                 .append(parser.parse(worker.getHired())).append(",")
                 .append(parser.parse(worker.getFired())).append(",")
-                .append(worker.getSalary())
+                .append(currencyFormat.format(worker.getSalary()))
                 .append(System.lineSeparator());
         assertThat(engine.generate(employee -> true)).isEqualTo(expected.toString());
     }

@@ -2,6 +2,7 @@ package ru.job4j.ood.srp.printers;
 
 import ru.job4j.ood.srp.currency.Currency;
 import ru.job4j.ood.srp.currency.CurrencyConverter;
+import ru.job4j.ood.srp.formatter.CurrencyFormat;
 import ru.job4j.ood.srp.formatter.DateTimeParser;
 import ru.job4j.ood.srp.model.Employee;
 
@@ -16,8 +17,9 @@ public class DefaultPrinter extends BasePrinter implements Printer {
                           Comparator<Employee> sorter,
                           Currency sourceCurrency,
                           Currency targetCurrency,
-                          CurrencyConverter converter) {
-        super(sourceCurrency, targetCurrency, converter, dateTimeParser);
+                          CurrencyConverter converter,
+                          CurrencyFormat currencyFormat) {
+        super(sourceCurrency, targetCurrency, converter, currencyFormat, dateTimeParser);
         this.rows = rows;
         this.sorter = sorter;
     }
