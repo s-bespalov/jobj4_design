@@ -15,7 +15,7 @@ public class SecureSite extends Site {
 
     @Override
     public void setURL(String url) {
-        super.setURL(url);
+        link = url;
     }
 
     @Override
