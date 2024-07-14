@@ -9,7 +9,6 @@ class UserService {
 
     public void performDatabaseOperations() {
         database.connect();
-        // Perform operations
         database.disconnect();
     }
 }

@@ -8,7 +8,6 @@ class OrderService {
     }
 
     public void placeOrder() {
-        // Логика размещения заказа
         System.out.println("Order placed");
         emailService.sendEmail("Order confirmation");
     }
