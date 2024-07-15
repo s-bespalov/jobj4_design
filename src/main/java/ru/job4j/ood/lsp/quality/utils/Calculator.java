@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class Calculator {
+
     public static int shelfLifeInPercents(Food food) {
         var rsl = 100;
         if (food.getCreateDate().isBefore(LocalDate.now())) {

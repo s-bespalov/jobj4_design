@@ -21,6 +21,13 @@ public abstract class AbstractStore {
         foods.add(food);
     }
 
+    public List<Food> ejectAllFood() {
+        var result = getFoods().stream().toList();
+        foods.clear();
+        result.forEach(food -> food.setDiscount(1d));
+        return result;
+    }
+
     public List<Food> getFoods() {
         return foods;
     }

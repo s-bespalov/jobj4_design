@@ -73,4 +73,39 @@ class ControlQualityTest {
         controlQuality.distributeFood(List.of(toTrash));
         assertThat(trash.getFoods()).containsExactly(toTrash);
     }
+
+    @Test
+    public void whenFoodLifeLess25AndResort3TimesThenDiscountedBy20Percents() {
+        var shop = new Shop();
+        var controlQuality = new ControlQuality(List.of(shop));
+        var food = new Food("Milk",
+                LocalDate.now().minusDays(78), LocalDate.now().plusDays(22), 100d);
+        controlQuality.distributeFood(List.of(food));
+        controlQuality.resort();
+        controlQuality.resort();
+        controlQuality.resort();
+        assertThat(food.getPriceAfterDiscount()).isEqualTo(80d);
+        assertThat(shop.getFoods()).containsExactly(food);
+    }
+
+    @Test
+    public void whenFoodsInWrongStoresAfterResortFoodsInRightStores() {
+        var shop = new Shop();
+        var warehouse = new Warehouse();
+        var trash = new Trash();
+        var controlQuality = new ControlQuality(List.of(warehouse, shop, trash));
+        var toWarehouse = new Food("Carrot",
+                LocalDate.now().minusDays(10), LocalDate.now().plusDays(90), 100d);
+        var toShop = new Food("Pizza",
+                LocalDate.now().minusDays(30), LocalDate.now().plusDays(70), 100d);
+        var toTrash = new Food("Apple",
+                LocalDate.now().minusDays(110), LocalDate.now().minusDays(10), 100d);
+        warehouse.addFood(toTrash);
+        shop.addFood(toWarehouse);
+        trash.addFood(toShop);
+        controlQuality.resort();
+        assertThat(shop.getFoods()).containsExactly(toShop);
+        assertThat(warehouse.getFoods()).containsExactly(toWarehouse);
+        assertThat(trash.getFoods()).containsExactly(toTrash);
+    }
 }
