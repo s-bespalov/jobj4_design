@@ -30,7 +30,7 @@ public class Brackets {
                 }
                 case insideBrackets -> {
                     if (c == ']') {
-                        state = stateStack.poll();
+                        state = stateStack.pop();
                     } else if (c == '{') {
                         stateStack.push(state);
                         state = State.insideCurly;
@@ -45,7 +45,7 @@ public class Brackets {
                 }
                 case insideCurly -> {
                     if (c == '}') {
-                        state = stateStack.poll();
+                        state = stateStack.pop();
                     } else if (c == '{') {
                         stateStack.push(state);
                     } else if (c == '[') {
@@ -60,7 +60,7 @@ public class Brackets {
                 }
                 case insideRound -> {
                     if (c == ')') {
-                        state = stateStack.poll();
+                        state = stateStack.pop();
                     } else if (c == '{') {
                         stateStack.push(state);
                         state = State.insideCurly;
