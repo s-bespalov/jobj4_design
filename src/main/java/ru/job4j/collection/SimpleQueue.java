@@ -2,7 +2,7 @@ package ru.job4j.collection;
 
 import java.util.NoSuchElementException;
 
-public class SimpleQueue<T> {
+public class SimpleQueue<T> implements Queue<T> {
     private final SimpleStack<T> in = new SimpleStack<>();
     private final SimpleStack<T> out = new SimpleStack<>();
     private int inSize;
@@ -28,5 +28,10 @@ public class SimpleQueue<T> {
     public void push(T value) {
         in.push(value);
         inSize++;
+    }
+
+    @Override
+    public int size() {
+        return inSize + outSize;
     }
 }
