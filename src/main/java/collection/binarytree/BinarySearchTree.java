@@ -56,8 +56,85 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     public boolean remove(T key) {
-        /* Метод будет реализован в следующих уроках */
+        if (Objects.nonNull(key) && Objects.nonNull(root)) {
+            return remove(root, key);
+        }
         return false;
+    }
+
+    private boolean remove(Node source, T key) {
+        boolean result = false;
+        Node parent = null;
+        boolean isLeftChild = false;
+        var current = source;
+        while (Objects.nonNull(current) && !result) {
+            var dif = key.compareTo(current.key);
+            if (dif > 0) {
+                parent = current;
+                isLeftChild = false;
+                current = current.right;
+            } else if (dif < 0) {
+                parent = current;
+                isLeftChild = true;
+                current = current.left;
+            } else {
+                result = true;
+            }
+        }
+        if (result) {
+            Node replacement = extractReplacement(current);
+            replace(replacement, current, parent, isLeftChild);
+        }
+        return result;
+    }
+
+    private void replace(Node replacement, Node destination, Node parent, boolean isLeft) {
+        if (Objects.equals(root, destination)) {
+            root = replacement;
+        } else if (Objects.nonNull(parent)) {
+            if (isLeft) {
+                parent.left = replacement;
+            } else {
+                parent.right = replacement;
+            }
+        }
+        if (Objects.nonNull(replacement)) {
+            replacement.left = destination.left;
+            replacement.right = destination.right;
+        }
+        destination.right = null;
+        destination.left = null;
+        destination.key = null;
+    }
+
+    private Node extractReplacement(Node nodeToReplace) {
+        Node replacement = null;
+        Node parent = nodeToReplace;
+        var isLeftChild = false;
+        if (Objects.nonNull(nodeToReplace.right)) {
+            replacement = nodeToReplace.right;
+            while (Objects.nonNull(replacement.left)) {
+                parent = replacement;
+                replacement = replacement.left;
+                isLeftChild = true;
+            }
+        } else if (Objects.nonNull(nodeToReplace.left)) {
+            replacement = nodeToReplace.left;
+            isLeftChild = true;
+            while (Objects.nonNull(replacement.right)) {
+                parent = replacement;
+                replacement = replacement.right;
+                isLeftChild = false;
+            }
+        }
+        if (Objects.nonNull(replacement)) {
+            if (isLeftChild) {
+                parent.left = null;
+            } else {
+                parent.right = null;
+            }
+        }
+        return replacement;
     }
 
     public List<T> inSymmetricalOrder() {
@@ -81,7 +158,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     private List<T> inPreOrder(Node localRoot, List<T> list) {
-        if (localRoot != null) {
+        if (Objects.nonNull(localRoot)) {
             list.add(localRoot.key);
             inPreOrder(localRoot.left, list);
             inPreOrder(localRoot.right, list);
@@ -95,7 +172,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     private List<T> inPostOrder(Node localRoot, List<T> list) {
-        if (localRoot != null) {
+        if (Objects.nonNull(localRoot)) {
             inPostOrder(localRoot.left, list);
             inPostOrder(localRoot.right, list);
             list.add(localRoot.key);
