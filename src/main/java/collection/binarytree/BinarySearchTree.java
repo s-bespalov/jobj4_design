@@ -41,6 +41,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return Objects.nonNull(find(root, key));
     }
 
+    public void clear() {
+        Node node = root;
+        clear(node);
+        root = null;
+    }
+
+    private void clear(Node localRoot) {
+        if (Objects.nonNull(localRoot)) {
+            clear(localRoot.left);
+            clear(localRoot.right);
+            localRoot.key = null;
+            localRoot.left = null;
+            localRoot.right = null;
+        }
+    }
+
     private Node find(Node node, T key) {
         if (Objects.nonNull(node)) {
             var dif = key.compareTo(node.key);

@@ -142,4 +142,15 @@ class BinarySearchTreeTest {
         var actual = bst.inSymmetricalOrder();
         assertThat(actual).containsExactlyElementsOf(expected);
     }
+
+    @Test
+    void whenClearThenTreeIsEmpty() {
+        BinarySearchTree<Integer> bst = new BinarySearchTree<>();
+        int[] array = new int[]{2, 1, 10, 6, 14, 4, 8, 12, 16, 11, 9, 13, 15, 17, 3, 5, 7};
+        for (int i : array) {
+            bst.put(i);
+        }
+        bst.clear();
+        assertThat(bst.inSymmetricalOrder()).isEmpty();
+    }
 }
