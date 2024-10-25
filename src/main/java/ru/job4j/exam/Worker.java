@@ -1,9 +1,6 @@
 package ru.job4j.exam;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class Worker {
     private String name;
@@ -36,14 +33,6 @@ public class Worker {
         this.managerID = managerID;
     }
 
-    @Override
-    public String toString() {
-        return new StringJoiner(", ", Worker.class.getSimpleName() + "[", "]")
-                .add("name='" + name + "'")
-                .add("managerID=" + managerID)
-                .toString();
-    }
-
     public static List<Worker> getAllManagers(List<Worker> workers, int id) {
         var result = new ArrayList<Worker>();
         var map = new HashMap<Integer, Worker>();
@@ -63,17 +52,33 @@ public class Worker {
 
     public static List<Worker> getAllSubWorkers(List<Worker> workers, int id) {
         var result = new ArrayList<Worker>();
-        var map = new HashMap<Integer, Worker>();
-        workers.forEach(w -> map.put(w.getManagerID(), w));
-        while (id != 0) {
-            if (map.containsKey(id)) {
-                var worker = map.get(id);
-                result.add(worker);
-                id = worker.getId();
-            } else {
-                id = 0;
+        var managers = new HashMap<Integer, List<Worker>>();
+        workers.forEach(w -> {
+            var managerId = w.getManagerID();
+            if (managerId != 0 && w.getId() != id) {
+                managers.putIfAbsent(managerId, new ArrayList<>());
+                managers.get(managerId).add(w);
+            }
+        });
+        var toVisit = new ArrayList<Integer>();
+        toVisit.add(id);
+        while (!toVisit.isEmpty()) {
+            var managerId = toVisit.removeFirst();
+            if (managers.containsKey(managerId)) {
+                var workersOfManager = managers.get(managerId);
+                result.addAll(workersOfManager);
+                workersOfManager.forEach(w -> toVisit.add(w.getId()));
             }
         }
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Worker.class.getSimpleName() + "[", "]")
+                .add("name='" + name + "'")
+                .add("managerID=" + managerID)
+                .add("id=" + id)
+                .toString();
     }
 }
