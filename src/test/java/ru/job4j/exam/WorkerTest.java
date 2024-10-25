@@ -43,10 +43,10 @@ class WorkerTest {
 
     @Test
     public void whenManagerHasCycledHierarchyOfWorkersThenReturnWorkers() {
-        Worker manager1 = new Worker(1, 5, "Manager1");
-        Worker manager2 = new Worker(2, 1, "Manager2");
+        Worker manager1 = new Worker(1, 0, "Manager1");
+        Worker manager2 = new Worker(2, 3, "Manager2");
         Worker worker = new Worker(3, 5, "Worker1");
-        Worker manager3 = new Worker(4, 1, "Manager3");
+        Worker manager3 = new Worker(4, 0, "Manager3");
         Worker worker2 = new Worker(5, 4, "Worker2");
 
         List<Worker> workers = List.of(manager1, manager2, manager3, worker, worker2);
